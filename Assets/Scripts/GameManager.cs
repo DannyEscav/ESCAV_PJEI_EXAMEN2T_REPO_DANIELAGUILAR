@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour {
     [SerializeField]
     private Text coinsCounter;
 
+    [Tooltip("Referencia al panel de final de partida")]
+    [SerializeField]
+    private GameObject gameOverPanel;
+
     [Tooltip("Referencia al panel de nivel finalizado")]
     [SerializeField]
     private GameObject levelFinishedPanel;
@@ -36,6 +40,12 @@ public class GameManager : MonoBehaviour {
     #endregion
 
     #region Public Static Messages
+
+    public static void GameOver() {
+        // Muestra la pantalla de final de partida
+        instance.gameOverPanel.SetActive(true);
+        instance.Invoke("LoadGame", 3.0f);
+    }
 
     public static void LevelFinished() {
         // Muestra la pantalla de nivel finalizado
